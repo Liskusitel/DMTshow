@@ -25,7 +25,7 @@ app.post("/api/register", (req, res) => {
   if (!fio || !age || !city || !phone) {
     return res.status(400).json({ error: "Все поля обязательны" });
   }
-  participants.push({ fio, age, city, phone, registeredAt: new Date().toISOString() });
+  participants.push({ id: crypto.randomUUID(), fio, age, city, phone, registeredAt: new Date().toISOString() });
   res.json({ success: true });
 });
 

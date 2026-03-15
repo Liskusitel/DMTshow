@@ -514,7 +514,7 @@ function App() {
             </thead>
             <tbody>
               {participants.map((p, i) => (
-                <tr key={p.registeredAt + i}>
+                <tr key={p.id || p.registeredAt + i}>
                   <td>{i + 1}</td>
                   <td>{p.fio}</td>
                   <td>{p.age}</td>
