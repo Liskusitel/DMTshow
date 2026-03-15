@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ComedyCollab — DMTshow</title>
+    <meta name="description" content="ComedyCollab комедийное шоу" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0b0f17;
+        --card: rgba(255, 255, 255, 0.06);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --accent: #7c5cff;
+        --accent2: #23c483;
+        --border: rgba(255, 255, 255, 0.14);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        --radius: 18px;
+        --maxw: 980px;
+        --pad: clamp(16px, 3.5vw, 28px);
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f6f7fb;
+          --card: rgba(0, 0, 0, 0.04);
+          --text: rgba(0, 0, 0, 0.88);
+          --muted: rgba(0, 0, 0, 0.62);
+          --accent: #5a3bff;
+          --accent2: #0ea66a;
+          --border: rgba(0, 0, 0, 0.10);
+          --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        background:
+          radial-gradient(1200px 700px at 20% 10%, rgba(124, 92, 255, 0.22), transparent 55%),
+          radial-gradient(900px 600px at 80% 20%, rgba(35, 196, 131, 0.16), transparent 60%),
+          radial-gradient(900px 600px at 50% 100%, rgba(255, 92, 143, 0.10), transparent 55%),
+          var(--bg);
+        color: var(--text);
+      }
+
+      a { color: inherit; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: clamp(24px, 4vw, 48px) var(--pad);
+      }
+
+      header {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 26px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+
+      .brand p {
+        margin: 2px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        font-size: 14px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .btn.primary {
+        border: 0;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: white;
+      }
+
+      .hero {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(20px, 4vw, 34px);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(600px 220px at 20% 20%, rgba(124,92,255,0.35), transparent 60%),
+                    radial-gradient(600px 260px at 80% 20%, rgba(35,196,131,0.22), transparent 60%);
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      .hero > * { position: relative; }
+
+      .hero h2 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 4.2vw, 44px);
+        line-height: 1.05;
+        letter-spacing: -0.5px;
+      }
+
+      .hero .subtitle {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: clamp(14px, 1.6vw, 18px);
+        max-width: 68ch;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        grid-column: span 12;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.04);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      @media (min-width: 860px) {
+        .card.span6 { grid-column: span 6; }
+        .card.span4 { grid-column: span 4; }
+        .card.span8 { grid-column: span 8; }
+      }
+
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.04);
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>ComedyCollab</h1>
+            <p>DMTshow — комедийное шоу</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Навигация">
+          <a class="btn" href="#about">О проекте</a>
+          <a class="btn" href="#contacts">Контакты</a>
+          <a class="btn primary" href="https://github.com/Liskusitel/DMTshow" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </nav>
+      </header>
+
+      <main class="hero">
+        <h2>Скоро здесь будет шоу.</h2>
+        <p class="subtitle">
+          Стартовая страница репозитория <strong>Liskusitel/DMTshow</strong>. Можно заменить блоки ниже на афишу,
+          расписание выпусков, ссылки на площадки и участников.
+        </p>
+
+        <div class="pill" role="note">
+          <span aria-hidden="true">•</span>
+          <span>Статус: в разработке</span>
+        </div>
+
+        <section class="grid" id="about" aria-label="Блоки">
+          <div class="card span6">
+            <h3>О проекте</h3>
+            <p>ComedyCollab комедийное шоу — коллаборации, выступления, скетчи и эксперименты.</p>
+          </div>
+
+          <div class="card span6">
+            <h3>Что дальше</h3>
+            <p>Добавьте сюда логотип, список выпусков, плеер/встраивание видео и форму обратной связи.</p>
+          </div>
+
+          <div class="card span8">
+            <h3>Площадки</h3>
+            <p>Укажите ссылки на YouTube / VK / TikTok / Telegram или другие канал��, где выходит шоу.</p>
+          </div>
+
+          <div class="card span4" id="contacts">
+            <h3>Контакты</h3>
+            <p>
+              Email: <span class="small">заполните</span><br />
+              Telegram: <span class="small">заполните</span>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>© <span id="y"></span> ComedyCollab</div>
+        <div class="small">Сделано просто: один файл <code>index.html</code>.</div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
