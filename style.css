@@ -1,0 +1,264 @@
+/* =====================================================
+   DMTshow — Neon Theme (dark red + blue)
+   Bootstrap 5 dark mode companion stylesheet
+   ===================================================== */
+
+/* ── CSS variables ─────────────────────────────────── */
+:root {
+  --neon-red:      #ff2244;
+  --neon-red-dim:  rgba(255, 34, 68, 0.65);
+  --neon-red-glow: 0 0 8px rgba(255, 34, 68, 0.8),
+                   0 0 20px rgba(255, 34, 68, 0.45),
+                   0 0 42px rgba(255, 34, 68, 0.25);
+
+  --neon-blue:      #1af0ff;
+  --neon-blue-dim:  rgba(26, 240, 255, 0.55);
+  --neon-blue-glow: 0 0 8px rgba(26, 240, 255, 0.8),
+                    0 0 20px rgba(26, 240, 255, 0.45),
+                    0 0 42px rgba(26, 240, 255, 0.25);
+
+  --bg-page:   #080b10;
+  --bg-card:   rgba(255, 255, 255, 0.04);
+  --border:    rgba(255, 255, 255, 0.10);
+  --radius-lg: 18px;
+  --radius-sm: 12px;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+html, body {
+  background-color: var(--bg-page);
+  color: rgba(255, 255, 255, 0.90);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+               "Noto Sans", "Liberation Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ── Navbar ─────────────────────────────────────────── */
+.neon-navbar {
+  background: rgba(8, 11, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.neon-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.neon-logo-icon {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--neon-red), var(--neon-blue));
+  box-shadow: var(--neon-red-glow);
+  flex-shrink: 0;
+}
+
+.neon-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s;
+}
+.neon-navbar .nav-link:hover,
+.neon-navbar .nav-link:focus {
+  color: #fff;
+}
+
+/* ── Buttons ────────────────────────────────────────── */
+.btn-neon {
+  background: linear-gradient(135deg, var(--neon-red), #a0003a 50%, var(--neon-blue));
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: box-shadow 0.25s, transform 0.15s;
+  text-decoration: none !important;
+}
+.btn-neon:hover,
+.btn-neon:focus-visible {
+  box-shadow: var(--neon-red-glow);
+  transform: translateY(-2px);
+  color: #fff !important;
+}
+.btn-neon:active {
+  transform: translateY(0);
+}
+
+.btn-neon-outline {
+  background: transparent;
+  border: 1.5px solid var(--neon-blue);
+  color: var(--neon-blue) !important;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: box-shadow 0.25s, background 0.2s, color 0.2s, transform 0.15s;
+  text-decoration: none !important;
+}
+.btn-neon-outline:hover,
+.btn-neon-outline:focus-visible {
+  background: rgba(26, 240, 255, 0.10);
+  box-shadow: var(--neon-blue-glow);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+.btn-neon-outline:active {
+  transform: translateY(0);
+}
+
+/* ── Hero section ───────────────────────────────────── */
+.neon-hero {
+  position: relative;
+  min-height: 90vh;
+  overflow: hidden;
+  padding: 6rem 0;
+}
+
+/* Decorative ambient orbs */
+.neon-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.neon-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  will-change: transform, filter;
+}
+.neon-orb-red {
+  width: 700px;
+  height: 500px;
+  top: -120px;
+  left: -180px;
+  background: radial-gradient(circle, rgba(255, 34, 68, 0.55), transparent 70%);
+}
+.neon-orb-blue {
+  width: 650px;
+  height: 550px;
+  bottom: -100px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(26, 240, 255, 0.45), transparent 70%);
+}
+
+/* Subtle grid lines overlay */
+.neon-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.neon-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hero badge ─────────────────────────────────────── */
+.neon-badge {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45em 1em;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ── Hero headline ──────────────────────────────────── */
+.neon-headline {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.neon-text-red {
+  color: var(--neon-red);
+  text-shadow: var(--neon-red-glow);
+}
+.neon-text-blue {
+  color: var(--neon-blue);
+  text-shadow: var(--neon-blue-glow);
+}
+.neon-accent-red {
+  color: var(--neon-red);
+}
+
+/* ── Hero subtitle ──────────────────────────────────── */
+.neon-subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+/* ── Feature / About section ────────────────────────── */
+.neon-section {
+  background: var(--bg-page);
+}
+
+.neon-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.neon-card:hover {
+  border-color: var(--neon-red-dim);
+  box-shadow: 0 0 18px rgba(255, 34, 68, 0.18), 0 4px 24px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+.neon-card--blue:hover {
+  border-color: var(--neon-blue-dim);
+  box-shadow: 0 0 18px rgba(26, 240, 255, 0.18), 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.neon-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ── CTA banner ─────────────────────────────────────── */
+.neon-cta-banner {
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 50%, rgba(255, 34, 68, 0.12), transparent),
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(26, 240, 255, 0.10), transparent),
+    rgba(255, 255, 255, 0.025);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.neon-footer {
+  background: rgba(0, 0, 0, 0.55);
+  border-top: 1px solid var(--border);
+}
+.neon-footer a:hover {
+  color: var(--neon-blue) !important;
+}
+
+/* ── Accessibility: reduce motion ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .btn-neon,
+  .btn-neon-outline,
+  .neon-card {
+    transition: none;
+  }
+  .btn-neon:hover,
+  .btn-neon-outline:hover,
+  .neon-card:hover {
+    transform: none;
+  }
+}
